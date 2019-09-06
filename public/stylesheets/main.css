@@ -13,9 +13,9 @@
 
   /* --- Welcome Page Styles --- */
   body {
-    background-color: lightblue;
+    background-color: #ccccb3;
     color: #333;
-    font-family: Sans-Serif;
+    font-family: "Droid Sans", Helvetica, sans-serif;
     line-height: 18px;
   }
 
@@ -37,9 +37,11 @@
 
   h2 {
     border-bottom: 2px solid #ccc;
-    font-size: 24px;
-    line-height: 36px;
-    margin-bottom: 16px;
+    font-size: 3em;
+    line-height: 1.3em;
+    margin-bottom: .5em;
+    color: #006666;
+    text-shadow: 0px 2px 3px #ccccb3;
   }
 
   h3 {
@@ -61,7 +63,7 @@
   }
 
   .sidebar {
-    background: #eee;
+    background: #ebebe0;
     border: 1px solid #ccc;
     float: right;
     padding: 2.08333333333%; /* 5px / 240px */
@@ -80,6 +82,13 @@
     border-top: 2px solid #ccc;
     margin-top: 20px;
     padding-top: 20px;
+  }
+
+  .main-image {
+    float: right;
+    max-width: 10%;
+    height: auto;
+    color: #003366;
   }
 }
 
