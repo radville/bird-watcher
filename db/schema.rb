@@ -24,11 +24,10 @@ ActiveRecord::Schema.define(version: 20190907154244) do
   end
 
   create_table "birds", force: :cascade do |t|
-    t.string "name"
-    t.string "order"
-    t.string "family"
     t.string "scientific_name"
     t.string "common_name"
+    t.string "order"
+    t.string "family"
     t.string "url"
     t.string "img_src"
     t.string "credit"
