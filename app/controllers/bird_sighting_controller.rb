@@ -3,7 +3,7 @@ class BirdSightingsController < ApplicationController
         erb :"bird_sightings/new"
     end
     
-    get "/sightings" do
+    get "/sightings/" do
         erb :"bird_sightings/index"
     end
     

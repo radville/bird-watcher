@@ -1,10 +1,10 @@
 class UsersController < ApplicationController
     get "/users/signup" do
-        # if !logged_in?
+        if !logged_in?
             erb :'users/signup'
-        # else
-        #     redirect to "/sightings"
-        # end
+        else
+            redirect to "/sightings"
+        end
     end
 
     post "/users/signup" do
