@@ -5,21 +5,24 @@
 <div class="grid-container">
     <% @birds.each do |bird|%>
         <div class="grid-item">
-            <img src=<%= bird.img_src %>>
+            <img src=<%= bird.img_src %>></a>
             <h5><%= bird.credit %> <a href=<%= bird.license_url %>>Image License</a></h5>
             <br>
-            <p><strong>Common name: </strong><%= bird.common_name %></p>
-            <p><strong>Scientific name: </strong><%= bird.scientific_name %></p>
             <p><strong>Order: </strong><%= bird.order %></p>
-            <strong>Family: </strong><%= bird.family %>
+            <p><strong>Family: </strong><%= bird.family %></p>
+            <strong>Scientific name: </strong><%= bird.scientific_name %>
+            <p><strong>Common name: </strong><%= bird.common_name %></p>
+            <form action="/sightings/" method="post">
+                <input type="hidden" name="common_name" value="<%=bird.common_name%>">
+                <input type="hidden" name="scientific_name" value="<%=bird.scientific_name%>">
+                <input type="hidden" name="order" value="<%=bird.order%>">
+                <input type="hidden" name="family" value="<%=bird.family%>">
+                <input type="hidden" name="img_src" value="<%=bird.img_src%>">
+                <input type="hidden" name="license_url" value="<%=bird.license_url%>">
+                <input type="submit" value="Add Bird Sightings">
+            </form>
+
         </div>
     <% end %>
-t.string "scientific_name"
-    t.string "common_name"
-    t.string "order"
-    t.string "family"
-    t.string "url"
-    t.string "img_src"
-    t.string "credit"
-    t.string "license_url"
+
 </div>
