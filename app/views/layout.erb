@@ -21,10 +21,11 @@
           <h2><a href="/">Bird Watcher</a></h2>
           <a href="/sightings/">My list</a>
           <a href="/sightings/choose">New bird sighting</a>
-          <a href="/users/signup">Sign up</a>
-          <a href="/users/login">Log in</a>
           <% if logged_in? %>
             <a href="/users/logout">Log out</a>
+          <% else %>
+            <a href="/users/signup">Sign up</a>
+            <a href="/users/login">Log in</a>
           <% end %>
 
         </div>
