@@ -1,5 +1,5 @@
 .grid-container {
-    height: 100vh;
+    height: auto;
     width: 90vw;
     display: grid;
     grid-template: auto / 1fr 1fr 1fr 1fr 1fr;
@@ -14,5 +14,9 @@
 
   .grid-item img {
       width: 100%;
-      justify-items: center;
   }
+
+  .grid-item img.default{
+    width: 30%;
+    padding: 0% 30%;
+   }

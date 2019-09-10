@@ -2,6 +2,7 @@ class BirdSightingsController < ApplicationController
     
     get "/sightings/" do
         if logged_in?
+            @sightings = BirdSighting.all.select {|sighting| sighting.user_id == session[:user_id]}
             erb :"bird_sightings/index"
         else
             redirect to "/users/login"
@@ -11,7 +12,9 @@ class BirdSightingsController < ApplicationController
     post "/sightings/" do
         puts params
         sighting = BirdSighting.create(common_name: params[:common_name], scientific_name: params[:scientific_name], \
-            datetime: params[:datetime], location: params[:location], description: params[:description], user_id: session[:user_id])
+            datetime: params[:datetime], location: params[:location], description: params[:description], \
+            credit: params[:credit], img_src: params[:img_src], license_url: params[:license_url], \
+            order: params[:order], family: params[:family], user_id: session[:user_id])
     
         redirect to "/sightings/#{sighting.id}"
     end
