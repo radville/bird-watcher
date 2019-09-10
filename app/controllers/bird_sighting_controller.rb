@@ -51,7 +51,7 @@ class BirdSightingsController < ApplicationController
     get "/sightings/:id/edit" do
         if logged_in?
             @sighting = BirdSighting.find_by_id(params[:id])
-            if @sighting && sighting.user == current_user
+            if @sighting && @sighting.user == current_user
                 erb :"bird_sightings/edit"
             else
                 redirect to "/sightings/"
@@ -70,11 +70,14 @@ class BirdSightingsController < ApplicationController
                 sighting.update(datetime: params[:datetime]) if params[:datetime] != "" 
                 sighting.update(location: params[:location]) if params[:location] != "" 
                 sighting.update(description: params[:description]) if params[:description] != "" 
+                sighting.update(datetime: params[:datetime]) if params[:datetime] != "" 
+                sighting.update(img_src: params[:img_src]) if params[:img_src] != "" 
     
                 redirect to "/sightings/#{sighting.id}"
             else
                 redirect to "/sightings/"
             end
+        end
     end
     
     delete "/sightings/:id/delete" do

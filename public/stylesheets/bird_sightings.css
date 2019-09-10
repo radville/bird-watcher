@@ -1,3 +1,49 @@
+/* --- styles for new bird form --- */
+  
+  .flex-outer li{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 20px;
+    }
+    
+  .flex-outer li label {
+    text-transform: uppercase;
+  }
+
+  .flex-outer li label, .flex-outer li .currentInfo {
+    padding: 8px;
+    flex: 1 0 120px;
+    max-width: 25%;
+  }
+  
+  .flex-outer > li > label + *, .flex-outer > li > .currentInfo + *{
+    flex: 1 0 220px;
+  }
+
+  .flex-outer li input,
+  .flex-outer li textarea {
+    padding: 15px;
+    border: none;
+  }
+  
+  .flex-outer li button {
+    margin-left: auto;
+    padding: 8px 16px;
+    border: none;
+    background: #1A5276;
+    color: #f2f2f2;
+    text-transform: uppercase;
+    letter-spacing: .09em;
+    border-radius: 2px;
+  }
+/*  -- on hover-- */
+  .flex-outer li button:hover {
+    background-color: #ddd;
+    color: black;
+  }
+
+/* --- styles for displaying sightings and birds --- */
 .grid-container {
     height: auto;
     width: 90vw;
@@ -12,6 +58,11 @@
     padding: 1%;
   }
 
+  img.show{
+    max-width: 50%;
+    max-height: 50%;
+}
+
   .grid-item img {
       width: 100%;
   }
@@ -20,3 +71,21 @@
     width: 30%;
     padding: 0% 30%;
    }
+
+   button {
+    border: 1px solid #ccc;
+    font-size: 1em;
+    cursor: pointer;
+    padding: .5% 1%;
+   }
+  
+   .grid-item button {
+    width: 30%;
+   }
+  
+  /* On mouse-over */
+   button:hover {
+      background: #1A5276;
+      color: #FFFF;
+    }
+    

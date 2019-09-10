@@ -1,4 +1,4 @@
-<h3>My bird sightings</h3>
+<h2>My bird sightings</h2>
 
 <div class="grid-container">
     <% @sightings.each do |sighting|%>
@@ -11,13 +11,15 @@
             <br>
             <%= "<p><strong> Bird common name: </strong>" + sighting.common_name + "</p>" unless sighting.common_name.nil? %>
             <%= "<p><strong> Bird order: </strong>" + sighting.order + "</p>" unless sighting.order.nil? %>
-            <%= "<p><strong> Bird family: </strong>" + sighting.family + "</p>" unless sighting.family.nil? %></p>
-            <%= "<p><strong> Bird scientific name: </strong>" + sighting.scientific_name + "</p>" unless sighting.scientific_name.nil? %></p>
-            <%= "<p><strong> Sighting date: </strong>" + sighting.datetime.strftime("%B %d, %Y") + "</p>" unless sighting.datetime.nil? %></p>
-            <%= "<p><strong> Sighting time: </strong>" + sighting.datetime.strftime("%l:%M %p") + "</p>" unless sighting.datetime.nil? %></p>
-            <%= "<p><strong> Sighting location: </strong>" + sighting.location + "</p>" unless sighting.location.nil? %></p>
-            <%= "<p><strong> Sighting description: </strong>" + sighting.description + "</p>" unless sighting.description.nil? %></p>
- 
+            <%= "<p><strong> Bird family: </strong>" + sighting.family + "</p>" unless sighting.family.nil? %>
+            <%= "<p><strong> Bird scientific name: </strong>" + sighting.scientific_name + "</p>" unless sighting.scientific_name.nil? %>
+            <%= "<p><strong> Sighting date: </strong>" + sighting.datetime.strftime("%B %d, %Y") + "</p>" unless sighting.datetime.nil? %>
+            <%= "<p><strong> Sighting time: </strong>" + sighting.datetime.strftime("%l:%M %p") + "</p>" unless sighting.datetime.nil? %>
+            <%= "<p><strong> Sighting location: </strong>" + sighting.location + "</p>" unless sighting.location.nil? %>
+            <%= "<p><strong> Sighting description: </strong>" + sighting.description + "</p>" unless sighting.description.nil? %>
+            <button onclick="window.location.href='/sightings/<%= sighting.id %>';">View</button>
+            <button onclick="window.location.href='/sightings/<%= sighting.id %>/edit';">Edit</button>
+            <button onclick="window.location.href='/sightings/<%= sighting.id %>/delete';">Delete</button>
 
         </div>
     <% end %>

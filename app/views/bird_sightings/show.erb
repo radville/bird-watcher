@@ -1,13 +1,14 @@
-<h3>Bird Sighting</h3>
+<h2>Bird Sighting</h2>
 <br>
-<h4><a href="/sightings/<%= @sighting.id %>/edit">Edit this sighting</a></h4>
+<h3><strong><%= @sighting.common_name %></strong>
 <br>
-<h4><a href="/sightings/<%= @sighting.id %>/delete">Delete this sighting</a></h4>
-<br>
-
-<p>Bird common name: <%= @sighting.common_name unless @sighting.common_name.nil? %></p>
-<p>Bird scientific name: <%= @sighting.scientific_name unless @sighting.scientific_name.nil? %></p>
-<p>Sighting date: <%= @sighting.datetime.strftime("%B %d, %Y") unless @sighting.datetime.nil? %></p>
-<p>Sighting time: <%= @sighting.datetime.strftime("%l:%M %p") unless @sighting.datetime.nil? %></p>
-<p>Sighting location: <%= @sighting.location unless @sighting.location.nil? %></p>
-<p>Sighting description: <%= @sighting.description unless @sighting.description.nil? %></p>
+<img class= "show" src=<%= @sighting.img_src %>>
+<p><strong> Order: </strong><%= @sighting.order %> </p>
+<p><strong> Family: </strong><%= @sighting.family %> </p>
+<p><strong> Scientific name: </strong><%= @sighting.scientific_name %></p> 
+<p><strong> Sighting date: </strong><%= @sighting.datetime.strftime("%B %d, %Y") unless @sighting.datetime.nil? %></p>
+<p><strong> Sighting time: </strong> <%= @sighting.datetime.strftime("%l:%M %p") unless @sighting.datetime.nil? %> </p> 
+<p><strong> Sighting location: </strong><%= @sighting.location %></p> 
+<p><strong> Sighting description: </strong><%= @sighting.description %></p>
+<button onclick=window.location.href='/sightings/<%= @sighting.id %>/edit';>Edit</button>
+<button onclick=window.location.href='/sightings/<%= @sighting.id %>/delete';>Delete</button>

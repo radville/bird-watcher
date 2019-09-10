@@ -1,13 +1,13 @@
 <div class="col-md-8 col-md-offset-2">
   <h3>Keep track of all your bird sightings!</h3>
-
-  <div class="box-container">
-    <div class="box-item">
-      <a href="./index">My Sightings</a>
-    </div>
-    <div class="box-item">
-      <a href="./new">Upload a new bird sighting</a>
-    </div>
-  </div>
-
+<br>
+<div class="grid-container">
+    <% @birds.sample(5).each do |bird|%>
+        <div class="grid-item">
+            <img src=<%= bird.img_src %>></a>
+            <br>
+            <h5><%= bird.credit %></h5>
+        </div>
+    <% end %>
+  
 </div>

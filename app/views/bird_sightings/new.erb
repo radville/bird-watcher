@@ -1,14 +1,33 @@
 <h2>Log a new bird sighting<h2>
 <br>
 <form action="/sightings/" method="post">
-    <p>Sighting information</p>
-    <p>Date and time: <input type="datetime-local" name="datetime"></p>
-    <p>Location: <input type="text" name="location"></p>
-    <br>
-    <p>Bird details</p>
-    <p>Common name: <input type="text" name="common_name"></p>
-    <p>Scientific name: <input type="text" name="scientific_name"></p>
-    <br>
-    <p>Description: <textarea name="description"></textarea></p>
-    <p><input type="submit" name="Log Bird Sighting"></p>
+    <ul class="flex-outer">
+        <li>
+            <label for="datetime">Date and time:</label>
+            <input type="datetime-local" id="datetime" name="datetime">
+        </li>
+        <li>
+            <label for="location">Location:</label>
+            <input type="text" id="location" name="location">
+        </li>
+        <li>
+            <label for="common_name">Bird common name:</label>
+            <input type="text" id="common_name" name="common_name">
+        </li>
+        <li>
+            <label for="scientific_name">Bird scientific name:</label>
+            <input type="text" id="scientific_name" name="scientific_name">
+        </li>
+        <li>
+            <label for="img_src">Link to image:</label>
+            <input type="text" id="img_src" name="img_src" placeholder="www.example.com">
+        </li>
+        <li>
+            <label for="description">Description:</label>
+            <textarea name="description" id="description"></textarea>
+        </li>
+        <li>
+            <button type="submit">Log Bird Sighting</button>
+        </li>
+    </ul>
 </form>

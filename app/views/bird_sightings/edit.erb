@@ -1,20 +1,49 @@
-<h3>Edit your bird sighting</h3>
+<h2>Edit your bird sighting</h2>
 <br>
 <form method="post" action="/sightings/<%=@sighting.id%>">
   <input id="hidden" type="hidden" name="_method" value="PATCH">
-    <p>Sighting information</p>
-    <p>Date and time: <%= @sighting.datetime.strftime("%B %e, %Y, %l:%M %p") %> &nbsp; <input type="datetime-local" name="datetime"></p>
-    <p>Location: <%= @sighting.location %> &nbsp; <input type="text" name="location"></p>
-    <br>
-    <p>Bird details</p>
-    <p>Common name: <%= @sighting.common_name %> &nbsp; <input type="text" name="common_name"></p>
-    <p>Scientific name: <%= @sighting.scientific_name %> &nbsp; <input type="text" name="scientific_name"></p>
-    <br>
-    <p>Description: <%= @sighting.description %> &nbsp; <textarea name="description"></textarea></p>
-    <p><input type="submit" name="Edit Bird Sighting"></p>
-</form>
+  <ul class="flex-outer">
+    <li>
+        <label></label>
+        <div class="currentInfo"><h3>Current Information</h3></div>
+        <input type="hidden"><h3>New Information</h3>
+    </li>
+    <li>
+        <label for="datetime">Date and time:</label>
+        <div class="currentInfo"> <%= @sighting.datetime.strftime("%B %e, %Y, %l:%M %p") unless @sighting.datetime.nil?%></div>
+        <input type="datetime-local" id="datetime" name="datetime">
+    </li>
+    <li>
+        <label for="location">Location:</label>
+        <div class="currentInfo"><%= @sighting.location %></div>
+        <input type="text" id="location" name="location">
+    </li>
+    <li>
+        <label for="common_name">Bird common name:</label>
+        <div class="currentInfo"><%= @sighting.common_name %></div>
+        <input type="text" id="common_name" name="common_name">
+    </li>
+    <li>
+        <label for="scientific_name">Bird scientific name:</label>
+        <div class="currentInfo"><%= @sighting.scientific_name %></div>
+        <input type="text" id="scientific_name" name="scientific_name">
+    </li>
+    <li>
+        <label for="img_src">Link to image:</label>
+        <div class="currentInfo"><%= @sighting.img_src %></div>
+        <input type="text" id="img_src" name="img_src" placeholder="www.example.com">
+    </li>
+    <li>
+        <label for="description">Description:</label>
+        <div class="currentInfo"><%= @sighting.description %></div>
+        <textarea name="description" id="description"></textarea>
+    </li>
+    <li>
+        <button type="submit">Update Bird Sighting</button>
+    </li>
+</ul>
 
 <form action="/sightings/<%= @sighting.id %>/delete" method="post">
   <input id="hidden" type="hidden" name="_method" value="delete">
-  <input type="submit" value="Delete Bird Sighting">
+  <input type="submit" value="Delete">
 </form>

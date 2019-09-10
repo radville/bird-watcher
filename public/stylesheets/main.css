@@ -38,12 +38,6 @@
   color: black;
 }
 
-/* Active/current link */
-  .topnav a.active {
-    background-color: #2196F3;
-    color: white;
-  }
-
   /* --- Welcome Page Styles --- */
 
   .wrapper {
@@ -68,20 +62,21 @@
     margin-bottom: 18px;
   }
 
-  .main {
-    overflow: hidden;
+input[type=submit] {
+    background-color: #1A5276;
+    border: none;
+    color: white;
+    padding: 1% 2%;
+    text-decoration: none;
+    margin: 2%;
+    cursor: pointer;
+    font-size: 1em;
   }
 
-  .box-container {
-    display: grid;
-    grid-template: auto / 1fr 1fr 1fr;
-    width: 100%;
-    grid-gap: 1%;
-  }
-
-  .box-item {
-    border: 2px solid #ccc;
-    padding: 5%;
+  /* --- submit buttons on mouse over --- */
+  input[type=submit]:hover {
+    background-color: #ddd;
+    color: black;
   }
 
   .branding {
@@ -92,7 +87,7 @@
     border-top: 2px solid #ccc;
     margin-top: 20px;
     padding-top: 20px;
-    color: #1F618D ;
+    color: #1A5276 ;
   }
 }
 
