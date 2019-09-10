@@ -17,11 +17,11 @@ class UsersController < ApplicationController
         end
     end
 
-    get "users/login" do
+    get "/users/login" do
         if !logged_in?
             erb :"users/login"
         else
-            redirect to "/sightings"
+            redirect to "/sightings/"
         end
     end
 

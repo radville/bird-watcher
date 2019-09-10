@@ -1,2 +1,15 @@
-Log a new bird sighting
-
+<h2>Log a new bird sighting<h2>
+<br>
+<form action="/sightings/" method="post">
+    <p>Sighting information</p>
+    <p>Date: <input type="date" name="date"></p>
+    <p>Time: <input type="time" name="time"></p>
+    <p>Location: <input type="text" name="location"></p>
+    <br>
+    <p>Bird details</p>
+    <p>Common name: <input type="text" name="common_name"></p>
+    <p>Scientific name: <input type="text" name="scientific_name"></p>
+    <br>
+    <p>Description: <textarea name="description"></textarea></p>
+    <p><input type="submit" name="Log Bird Sighting"></p>
+</form>

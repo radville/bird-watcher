@@ -1,15 +1,19 @@
 class BirdSightingsController < ApplicationController
-    get "/sightings/new" do
-        erb :"bird_sightings/new"
-    end
     
     get "/sightings/" do
         erb :"bird_sightings/index"
     end
     
-    post "/sightings" do
+    post "/sightings/" do
+        sighting = BirdSighting.create(common_name: params[:common_name], scientific_name: params[:scientific_name], \
+            date: params[:date], time: params[:time], location: params[:location], description: params[:description], \
+            user_id: session[:user_id])
     
         redirect to "/sightings/#{sighting.id}"
+    end
+
+    get "/sightings/new" do
+        erb :"bird_sightings/new"
     end
     
     get "/sightings/:id" do
