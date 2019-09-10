@@ -1,0 +1,12 @@
+.grid-container {
+    height: 100vh;
+    width: 100vw;
+    display: grid;
+    grid-template: auto / 1fr 1fr 1fr;
+    grid-gap: 5px;
+  }
+  
+  .grid-item {
+    background-color: grey;
+    border: 1px solid black;
+  }

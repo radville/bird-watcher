@@ -7,7 +7,7 @@
 
 <p>Bird common name: <%= @sighting.common_name  %></p>
 <p>Bird scientific name: <%= @sighting.scientific_name %></p>
-<p>Sighting date: <%= @sighting.date %></p>
-<p>Sighting time: <%= @sighting.time %></p>
+<p>Sighting date: <%= @sighting.datetime.strftime("%B %d, %Y") %></p>
+<p>Sighting time: <%= @sighting.datetime.strftime("%l:%M %p") %></p>
 <p>Sighting location: <%= @sighting.location %></p>
 <p>Sighting description: <%= @sighting.description %></p>

@@ -1,0 +1,10 @@
+
+
+<h3>Choose from the following birds or <a href="/sightings/new">create new bird sighting</a> </h3>
+
+<div class="grid-container">
+    <% @birds.each do |bird|%>
+        <div class="grid-item"><%= bird.common_name %></div>
+    <% end %>
+
+</div>

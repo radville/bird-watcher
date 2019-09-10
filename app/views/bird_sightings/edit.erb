@@ -3,8 +3,7 @@
 <form method="post" action="/sightings/<%=@sighting.id%>">
   <input id="hidden" type="hidden" name="_method" value="PATCH">
     <p>Sighting information</p>
-    <p>Date: <%= @sighting.date %> &nbsp; <input type="date" name="date"></p>
-    <p>Time: <%= @sighting.time %> &nbsp; <input type="time" name="time"></p>
+    <p>Date and time: <%= @sighting.datetime.strftime("%B %e, %Y, %l:%M %p") %> &nbsp; <input type="datetime-local" name="datetime"></p>
     <p>Location: <%= @sighting.location %> &nbsp; <input type="text" name="location"></p>
     <br>
     <p>Bird details</p>

@@ -3,8 +3,7 @@ class CreateBirdSightings < ActiveRecord::Migration
     create_table :bird_sightings do |t|
       t.string :common_name
       t.string :scientific_name
-      t.date :date
-      t.time :time
+      t.datetime :datetime
       t.string :location
       t.string :description
       t.string :order
