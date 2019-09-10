@@ -12,20 +12,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="https://fonts.googleapis.com/css?family=Barlow&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/stylesheets/main.css" />
+    <link rel="stylesheet" href="/stylesheets/bird_sightings.css" />
     <link rel="shortcut icon" href="/stylesheets/bird.ico" />
   </head>
   <body>
     <div class="wrapper">
         <div class="topnav">
           <h2><a href="./">Bird Watcher</a></h2>
-          <a href="/users/login">Log in</a>
-          <a href="/users/signup">Sign up</a>
-          <a href="/sightings/new">New bird sighting</a>
           <a href="/sightings/">My bird sightings</a>
+          <a href="/sightings/new">New bird sighting</a>
+          <a href="/users/signup">Sign up</a>
+          <a href="/users/login">Log in</a>
 
         </div>
 
-        <%= yield %>
+        <div class="content">
+
+          <%= yield %>
+
+        </div>
 
       <footer class="branding">
         <small>&copy; 2019 <strong>BirdWatcher</strong></small>

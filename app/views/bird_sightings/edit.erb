@@ -1,1 +1,23 @@
 Edit your bird sighting
+<br>
+<form method="post" action="/sightings/<%=@sighting.id%>">
+  <input id="hidden" type="hidden" name="_method" value="PATCH">
+    <p>Sighting information</p>
+    <p>Date: <%= @sighting.date %> &nbsp; <input type="date" name="date"></p>
+    <p>Time: <%= @sighting.time %> &nbsp; <input type="time" name="time"></p>
+    <p>Location: <%= @sighting.location %> &nbsp; <input type="text" name="location"></p>
+    <br>
+    <p>Bird details</p>
+    <p>Common name: <%= @sighting.common_name %> &nbsp; <input type="text" name="common_name"></p>
+    <p>Scientific name: <%= @sighting.scientific_name %> &nbsp; <input type="text" name="scientific_name"></p>
+    <br>
+    <p>Description: <%= @sighting.description %> &nbsp; <textarea name="description"></textarea></p>
+    <p><input type="submit" name="Edit Bird Sighting"></p>
+</form>
+
+Delete bird sighting
+
+<form action="/sighting/<%= @sighting.id %>/delete" method="post">
+  <input id="hidden" type="hidden" name="_method" value="delete">
+  <input type="submit" value="delete" name="Delete Bird Sighting">
+</form>

@@ -1,7 +1,11 @@
 class BirdSightingsController < ApplicationController
     
     get "/sightings/" do
-        erb :"bird_sightings/index"
+        if logged_in?
+            erb :"bird_sightings/index"
+        else
+            redirect to "/users/login"
+        end
     end
     
     post "/sightings/" do
@@ -13,32 +17,46 @@ class BirdSightingsController < ApplicationController
     end
 
     get "/sightings/new" do
-        erb :"bird_sightings/new"
+        if logged_in?
+            erb :"bird_sightings/new"
+        else
+            redirect to "/users/login"
+        end
     end
     
     get "/sightings/:id" do
-        @sighting = BirdSighting.find_by_id(params[:id])
-        erb :"bird_sightings/show"
+        if logged_in?
+            @sighting = BirdSighting.find_by_id(params[:id])
+            erb :"bird_sightings/show"
+        else
+            redirect to "/users/login"
+        end
     end
     
     get "/sightings/:id/edit" do
-        @sighting = BirdSighting.find_by_id(params[:id])
+        if logged_in?
+            @sighting = BirdSighting.find_by_id(params[:id])
     
-        erb :"bird_sightings/edit"
+            erb :"bird_sightings/edit"
+        else
+            redirect to "/users/login"
+        end
     end
     
     patch "/sightings/:id" do
         sighting = BirdSighting.find_by_id(params[:id])
-        sighting.update()
+        sighting.update(common_name: params[:common_name], scientific_name: params[:scientific_name], \
+            date: params[:date], time: params[:time], location: params[:location], description: params[:description], \
+            user_id: session[:user_id])
     
         redirect to "/sightings/#{sighting.id}"
     end
     
-    delete "/sightings/:id" do
+    delete "/sightings/:id/delete" do
         sighting = BirdSighting.find_by_id(params[:id])
         sighting.delete
 
-        redirect to "/sightings"
+        redirect to "/sightings/"
     end
 
 end
