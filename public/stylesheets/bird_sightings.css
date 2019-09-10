@@ -1,12 +1,18 @@
 .grid-container {
     height: 100vh;
-    width: 100vw;
+    width: 90vw;
     display: grid;
-    grid-template: auto / 1fr 1fr 1fr;
+    grid-template: auto / 1fr 1fr 1fr 1fr 1fr;
     grid-gap: 5px;
   }
   
   .grid-item {
-    background-color: grey;
-    border: 1px solid black;
+    background-color: #FDFEFE;
+    border: 1px solid #ccc;
+    padding: 1%;
+  }
+
+  .grid-item img {
+      width: 100%;
+      justify-items: center;
   }

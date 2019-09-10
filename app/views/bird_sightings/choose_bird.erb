@@ -4,7 +4,22 @@
 
 <div class="grid-container">
     <% @birds.each do |bird|%>
-        <div class="grid-item"><%= bird.common_name %></div>
+        <div class="grid-item">
+            <img src=<%= bird.img_src %>>
+            <h5><%= bird.credit %> <a href=<%= bird.license_url %>>Image License</a></h5>
+            <br>
+            <p><strong>Common name: </strong><%= bird.common_name %></p>
+            <p><strong>Scientific name: </strong><%= bird.scientific_name %></p>
+            <p><strong>Order: </strong><%= bird.order %></p>
+            <strong>Family: </strong><%= bird.family %>
+        </div>
     <% end %>
-
+t.string "scientific_name"
+    t.string "common_name"
+    t.string "order"
+    t.string "family"
+    t.string "url"
+    t.string "img_src"
+    t.string "credit"
+    t.string "license_url"
 </div>
