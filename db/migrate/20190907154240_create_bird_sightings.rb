@@ -7,7 +7,14 @@ class CreateBirdSightings < ActiveRecord::Migration
       t.time :time
       t.string :location
       t.string :description
+      t.string :order
+      t.string :family
+      t.string :url
+      t.string :img_src
+      t.string :credit
+      t.string :license_url
       t.integer :user_id
+      
     end
   end
 end

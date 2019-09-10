@@ -1,12 +1,13 @@
-Bird Sighting
+<h3>Bird Sighting</h3>
+<br>
+<h4><a href="/sightings/<%= @sighting.id %>/edit">Edit this sighting</a></h4>
+<br>
+<h4><a href="/sightings/<%= @sighting.id %>/delete">Delete this sighting</a></h4>
+<br>
 
-Edit this sighting
-Delete this sighting
-
-
-<%= @sighting.common_name  %>
-<%= @sighting.scientific_name %>
-<%= @sighting.date %>
-<%= @sighting.time %>
-<%= @sighting.location %>
-<%= @sighting.description %>
+<p>Bird common name: <%= @sighting.common_name  %></p>
+<p>Bird scientific name: <%= @sighting.scientific_name %></p>
+<p>Sighting date: <%= @sighting.date %></p>
+<p>Sighting time: <%= @sighting.time %></p>
+<p>Sighting location: <%= @sighting.location %></p>
+<p>Sighting description: <%= @sighting.description %></p>

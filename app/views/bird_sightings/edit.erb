@@ -1,4 +1,4 @@
-Edit your bird sighting
+<h3>Edit your bird sighting</h3>
 <br>
 <form method="post" action="/sightings/<%=@sighting.id%>">
   <input id="hidden" type="hidden" name="_method" value="PATCH">
@@ -15,9 +15,7 @@ Edit your bird sighting
     <p><input type="submit" name="Edit Bird Sighting"></p>
 </form>
 
-Delete bird sighting
-
-<form action="/sighting/<%= @sighting.id %>/delete" method="post">
+<form action="/sightings/<%= @sighting.id %>/delete" method="post">
   <input id="hidden" type="hidden" name="_method" value="delete">
-  <input type="submit" value="delete" name="Delete Bird Sighting">
+  <input type="submit" value="Delete Bird Sighting">
 </form>
