@@ -1,4 +1,8 @@
+require 'sinatra/base'
+require 'rack-flash'
+
 class BirdSightingsController < ApplicationController
+    use Rack::Flash
 
     get "/sightings/" do
         if logged_in?
@@ -11,13 +15,13 @@ class BirdSightingsController < ApplicationController
     
     post "/sightings/" do
         if logged_in? && params[:common_name] != ""
-            flash[:message] = "Successfully added a bird sighting!"
 
             sighting = BirdSighting.create(common_name: params[:common_name], scientific_name: params[:scientific_name], \
                 datetime: params[:datetime], location: params[:location], description: params[:description], \
                 credit: params[:credit], img_src: params[:img_src], license_url: params[:license_url], \
                 order: params[:order], family: params[:family], user_id: session[:user_id])
-        
+                
+            flash[:message] = "Successfully added a bird sighting!"
             redirect to "/sightings/#{sighting.slug}"
         else
             redirect to "/users/login"

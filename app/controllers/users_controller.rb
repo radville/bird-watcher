@@ -16,7 +16,8 @@ class UsersController < ApplicationController
         else
             @user = User.create(first_name: params[:first_name], last_name: params[:last_name], email: params[:email], password: params[:password])
             session[:user_id] = @user.id
-            redirect to '/sightings/'
+            flash[:message] = "Welcome, #{@user.first_name}! Successfully created account."
+            redirect to '/'
         end
     end
 
@@ -24,7 +25,7 @@ class UsersController < ApplicationController
         if !logged_in?
             erb :"users/login"
         else
-            redirect to "/sightings/"
+            redirect to "/"
         end
     end
 
@@ -32,7 +33,9 @@ class UsersController < ApplicationController
         user = User.find_by(email: params[:email])
         if user && user.authenticate(params[:password])
             session[:user_id] = user.id
-            redirect to '/sightings/'
+            flash[:message] = "Welcome back, #{user.first_name}!"
+
+            redirect to '/'
         else
             redirect to "/users/login"
         end
