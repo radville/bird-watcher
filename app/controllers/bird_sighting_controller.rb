@@ -39,6 +39,14 @@ class BirdSightingsController < ApplicationController
             redirect to "/users/login"
         end
     end
+
+    post "/sightings/choose" do
+        if logged_in? && params[:search] != ""
+            redirect to "/sightings/choose/#{params[:search].slug}"
+        else
+            redirect to "/users/login"
+        end
+    end
     
     get "/sightings/:slug" do
         if logged_in?

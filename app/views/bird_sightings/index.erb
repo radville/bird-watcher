@@ -17,6 +17,7 @@
             <%= "<p><strong> Sighting time: </strong>" + sighting.datetime.strftime("%l:%M %p") + "</p>" unless sighting.datetime.nil? %>
             <%= "<p><strong> Sighting location: </strong>" + sighting.location + "</p>" unless sighting.location.nil? %>
             <%= "<p><strong> Sighting description: </strong>" + sighting.description + "</p>" unless sighting.description.nil? %>
+            <br>
             <button onclick="window.location.href='/sightings/<%= sighting.slug %>';">View</button>
             <button onclick="window.location.href='/sightings/<%= sighting.slug %>/edit';">Edit</button>
             <button onclick="window.location.href='/sightings/<%= sighting.slug %>/delete';">Delete</button>

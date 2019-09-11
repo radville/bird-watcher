@@ -52,6 +52,16 @@
   }
 
 /* --- styles for displaying sightings and birds --- */
+.searchBar input, .searchBar input button {
+  overflow: hidden;
+  float: left;
+  padding: .5%;
+  margin: 0% 0% 2%;
+  height: 1em;
+  font-size: 1em;
+  font-family: 'Barlow', sans-serif;
+}
+
 .grid-container {
     height: auto;
     width: 90vw;
@@ -67,6 +77,7 @@
   }
 
   img.show{
+    max-width: 40vw;
     max-height: 40vw;
 }
 
@@ -83,11 +94,11 @@
     border: 1px solid #ccc;
     font-size: 1em;
     cursor: pointer;
-    padding: .5% 1%;
+    padding: .5% 2%;
    }
   
    .grid-item button {
-    width: 30%;
+    width: auto;
    }
   
   /* On mouse-over */
@@ -96,4 +107,3 @@
       color: #FFFF;
       border: 1px solid #1A5276;
     }
-    
