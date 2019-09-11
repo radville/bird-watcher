@@ -10,7 +10,6 @@
 <div class="grid-container">
     <% @birds.each do |bird|%>
         <div class="grid-item">
-        <%binding.pry%>
             <h4><%= bird.common_name %></h4>
             <img src=<%= bird.img_src %>></a>
             <h5><%= bird.credit %> <a href=<%= bird.license_url %>>Image License</a></h5>

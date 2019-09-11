@@ -54,7 +54,7 @@ class BirdSightingsController < ApplicationController
             search_terms = params[:slug].gsub("-"," ")
             @birds = []
             search_terms.split(" ").each do |term|
-                @birds << Bird.all.select { |bird| bird.common_name.downcase.include?(term) }
+                @birds.concat Bird.all.select { |bird| bird.common_name.downcase.include?(term) }
             end
 
             erb :"bird_sightings/choose_bird"
