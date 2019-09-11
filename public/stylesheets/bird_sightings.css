@@ -17,6 +17,11 @@
     flex-wrap: wrap;
     max-width: 25%;
   }
+
+  .flex-outer li label + div.currentInfo {
+    flex: 20%;
+    }
+  
   
   .flex-outer > li > label + *, .flex-outer > li > .currentInfo + *{
     flex-grow: 1;
