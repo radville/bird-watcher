@@ -16,7 +16,7 @@ class BirdSightingsController < ApplicationController
                 credit: params[:credit], img_src: params[:img_src], license_url: params[:license_url], \
                 order: params[:order], family: params[:family], user_id: session[:user_id])
                 
-            flash.now[:message] = "Successfully added a bird sighting!"
+            flash.now[:message] = "Successfully added to your list!"
             redirect to "/sightings/#{sighting.slug}"
         else
             redirect to "/users/login"
@@ -41,9 +41,9 @@ class BirdSightingsController < ApplicationController
     end
     
     get "/sightings/:slug" do
-        flash.now[:message] = "Successfully added a bird sighting!"
-
         if logged_in?
+            flash.now[:message] = "Successfully added to your list!"
+
             @sighting = BirdSighting.find_by_slug(params[:slug])
             erb :"bird_sightings/show"
         else
@@ -68,7 +68,6 @@ class BirdSightingsController < ApplicationController
         if logged_in?
             sighting = BirdSighting.find_by_slug(params[:slug])
             if sighting && sighting.user == current_user && params[:common_name] != ""
-                flash[:message] = "Successfully edited bird sighting!"
 
                 sighting.update(common_name: params[:common_name]) if params[:common_name] != "" 
                 sighting.update(scientific_name: params[:scientific_name]) if params[:scientific_name] != "" 
@@ -76,8 +75,10 @@ class BirdSightingsController < ApplicationController
                 sighting.update(location: params[:location]) if params[:location] != "" 
                 sighting.update(description: params[:description]) if params[:description] != "" 
                 sighting.update(datetime: params[:datetime]) if params[:datetime] != "" 
-                sighting.update(img_src: params[:img_src]) if params[:img_src] != "" 
-    
+                sighting.update(img_src: params[:img_src]) if params[:img_src] != ""
+
+                flash.now[:message] = "Successfully edited!"
+                binding.pry
                 redirect to "/sightings/#{sighting.slug}"
             else
                 redirect to "/sightings/"

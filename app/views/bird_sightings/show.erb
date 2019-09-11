@@ -1,11 +1,10 @@
-<% if flash.has?(:message) %>
-  <%= flash[:message] %>
-<% end %>
+<div id="flash">   
+    <% if flash.has?(:message) %>
+    <%= flash[:message] %>
+    <% end %>
+</div>
 
-<h2>Bird Sighting</h2>
-<br>
-
-<h3><strong><%= @sighting.common_name %></strong>
+<h2><%= @sighting.common_name %></h2>
 <br>
 <img class= "show" src=<%= @sighting.img_src %>>
 <p><strong> Order: </strong><%= @sighting.order %> </p>

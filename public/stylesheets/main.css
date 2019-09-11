@@ -89,8 +89,24 @@ input[type=submit] {
     padding-top: 20px;
     color: #1A5276 ;
   }
+
+/* The animation code */
+/* @keyframes flash {
+  from {color: #D35400; display: block;}
+  to {color: #F5F5F5; display: none;}
+} */
+
+#flash {
+  margin: 0em 0em .5em;
+  font-size: 1.2em;
+  font-weight: 900;
+  color: #D35400;
+  /* animation-name: flash;
+  animation-duration: 10s;
+  animation-fill-mode: forwards; */
 }
 
+}
 @media screen and (max-width: 600px) {
   .wrapper {
     width: auto;
