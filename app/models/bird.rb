@@ -1,9 +1,4 @@
-require_relative "./slugifier.rb"
-
 class Bird < ActiveRecord::Base
-    include Slugifier::InstanceMethods
-    extend Slugifier::ClassMethods
-
     def self.create_from_scraper(doc)
         doc.css("table table tr").drop(1).each do |row|
             bird = Bird.new(order: row.css("td")[0].text, family: row.css("td")[1].text, scientific_name: row.css("td")[2].text, common_name: row.css("td")[3].text[1..-2], url: row.css("td")[2].children[0]["href"])

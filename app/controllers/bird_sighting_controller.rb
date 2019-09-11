@@ -42,7 +42,22 @@ class BirdSightingsController < ApplicationController
 
     post "/sightings/choose" do
         if logged_in? && params[:search] != ""
-            redirect to "/sightings/choose/#{params[:search].slug}"
+            search = Search.new(params[:search])
+            redirect to "/sightings/choose/#{search.search_terms.downcase.gsub(" ","-")}"
+        else
+            redirect to "/users/login"
+        end
+    end
+
+    get "/sightings/choose/:slug" do
+        if logged_in?
+            search_terms = params[:slug].gsub("-"," ")
+            @birds = []
+            search_terms.split(" ").each do |term|
+                @birds << Bird.all.select { |bird| bird.common_name.downcase.include?(term) }
+            end
+
+            erb :"bird_sightings/choose_bird"
         else
             redirect to "/users/login"
         end
@@ -84,7 +99,7 @@ class BirdSightingsController < ApplicationController
 
                 flash[:message] = "Successfully edited!"
 
-                redirect to "/sightings/#{sighting.slug}"
+                redirect to "/sightings/#{sighting.common_name.slug}"
             else
                 flash[:message] = "Edits not saved. Please try again."
 

@@ -10,6 +10,7 @@
 <div class="grid-container">
     <% @birds.each do |bird|%>
         <div class="grid-item">
+        <%binding.pry%>
             <h4><%= bird.common_name %></h4>
             <img src=<%= bird.img_src %>></a>
             <h5><%= bird.credit %> <a href=<%= bird.license_url %>>Image License</a></h5>
@@ -18,6 +19,7 @@
             <p><strong>Family: </strong><%= bird.family %></p>
             <p><strong>Scientific name: </strong><%= bird.scientific_name %></p>
             <form action="/sightings/" method="post">
+                <input type="hidden" name="common_name" value="<%=bird.common_name%>">
                 <input type="hidden" name="scientific_name" value="<%=bird.scientific_name%>">
                 <input type="hidden" name="order" value="<%=bird.order%>">
                 <input type="hidden" name="family" value="<%=bird.family%>">

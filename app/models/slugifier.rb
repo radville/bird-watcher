@@ -1,13 +1,17 @@
 module Slugifier
     module InstanceMethods
         def slug
-            common_name.downcase.gsub(" ","-")
+            self.downcase.gsub(" ","-")
+        end
+
+        def unslug
+            self.gsub("-"," ")
         end
     end
 
     module ClassMethods
         def find_by_slug(slug)
-            self.all.find{|sighting| sighting.slug == slug}
+            self.all.find{|object| object.slug == slug}
         end
     end
 end
