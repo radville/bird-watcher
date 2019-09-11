@@ -8,6 +8,7 @@ ActiveRecord::Base.establish_connection(
   :database => "db/#{ENV['SINATRA_ENV']}.sqlite"
 )
 
+require 'sinatra/base'
 require 'nokogiri'
 require 'open-uri'
 require 'rack-flash'
