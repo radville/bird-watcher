@@ -11,5 +11,6 @@ ActiveRecord::Base.establish_connection(
 require 'nokogiri'
 require 'open-uri'
 require 'rack-flash'
+require "rack/flash/test"
 require './app/controllers/application_controller'
 require_all 'app'
