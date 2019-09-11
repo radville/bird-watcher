@@ -67,8 +67,7 @@
   }
 
   img.show{
-    max-width: 40%;
-    max-height: 40%;
+    max-height: 40vw;
 }
 
   .grid-item img {

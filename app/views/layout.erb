@@ -31,6 +31,13 @@
         </div>
 
         <div class="content">
+        <div id="flash">   
+          <% flash.keys.each do |type| %>
+            <div data-alert class="flash <%= type %> alert-box radius">
+              <%= flash[type] %>
+            </div>
+          <% end %>
+        </div>
 
           <%= yield %>
 

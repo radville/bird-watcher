@@ -19,7 +19,7 @@
 
   .topnav h2 a {
     padding: 0em .7em .18em;
-    font-size: 2.13em;
+    font-size: 2.145em;
     color: #FFFFFF;
   }
 
@@ -29,7 +29,6 @@
     padding: 1.1em;
     text-decoration: none;
     color: #FFFFFF;
-    /* flex-basis: 15%; */
   }
 
 /* Navbar links on mouse-over */

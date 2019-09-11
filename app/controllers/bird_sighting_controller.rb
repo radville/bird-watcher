@@ -16,7 +16,7 @@ class BirdSightingsController < ApplicationController
                 credit: params[:credit], img_src: params[:img_src], license_url: params[:license_url], \
                 order: params[:order], family: params[:family], user_id: session[:user_id])
                 
-            flash.now[:message] = "Successfully added to your list!"
+            flash[:message] = "Successfully added to your list!"
             redirect to "/sightings/#{sighting.slug}"
         else
             redirect to "/users/login"
@@ -42,8 +42,6 @@ class BirdSightingsController < ApplicationController
     
     get "/sightings/:slug" do
         if logged_in?
-            flash.now[:message] = "Successfully added to your list!"
-
             @sighting = BirdSighting.find_by_slug(params[:slug])
             erb :"bird_sightings/show"
         else
@@ -67,8 +65,7 @@ class BirdSightingsController < ApplicationController
     patch "/sightings/:slug" do
         if logged_in?
             sighting = BirdSighting.find_by_slug(params[:slug])
-            if sighting && sighting.user == current_user && params[:common_name] != ""
-
+            if sighting && sighting.user == current_user
                 sighting.update(common_name: params[:common_name]) if params[:common_name] != "" 
                 sighting.update(scientific_name: params[:scientific_name]) if params[:scientific_name] != "" 
                 sighting.update(datetime: params[:datetime]) if params[:datetime] != "" 
@@ -77,11 +74,13 @@ class BirdSightingsController < ApplicationController
                 sighting.update(datetime: params[:datetime]) if params[:datetime] != "" 
                 sighting.update(img_src: params[:img_src]) if params[:img_src] != ""
 
-                flash.now[:message] = "Successfully edited!"
-                binding.pry
+                flash[:message] = "Successfully edited!"
+
                 redirect to "/sightings/#{sighting.slug}"
             else
-                redirect to "/sightings/"
+                flash[:message] = "Edits not saved. Please try again."
+
+                redirect to "/sightings/:slug/edit"
             end
         end
     end

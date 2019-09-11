@@ -10,6 +10,7 @@ class ApplicationController < Sinatra::Base
     enable :sessions
     set :session_secret, "secret"
     use Rack::Flash
+    register Sinatra::Flash
   end
 
   get "/" do
