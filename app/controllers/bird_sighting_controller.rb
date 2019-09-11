@@ -2,6 +2,7 @@ class BirdSightingsController < ApplicationController
     get "/sightings/" do
         if logged_in?
             @sightings = BirdSighting.all.select {|sighting| sighting.user_id == session[:user_id]}
+            @sightings.sort_by { |sighting| sighting.common_name}
             erb :"bird_sightings/index"
         else
             redirect to "/users/login"
@@ -99,7 +100,7 @@ class BirdSightingsController < ApplicationController
 
                 flash[:message] = "Successfully edited!"
 
-                redirect to "/sightings/#{sighting.common_name.slug}"
+                redirect to "/sightings/#{sighting.slug}"
             else
                 flash[:message] = "Edits not saved. Please try again."
 

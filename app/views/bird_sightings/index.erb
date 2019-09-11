@@ -18,9 +18,9 @@
             <%= "<p><strong> Sighting location: </strong>" + sighting.location + "</p>" unless sighting.location.nil? %>
             <%= "<p><strong> Sighting description: </strong>" + sighting.description + "</p>" unless sighting.description.nil? %>
             <br>
-            <button onclick="window.location.href='/sightings/<%= sighting.common_name.slug %>';">View</button>
-            <button onclick="window.location.href='/sightings/<%= sighting.common_name.slug %>/edit';">Edit</button>
-            <button onclick="window.location.href='/sightings/<%= sighting.common_name.slug %>/delete';">Delete</button>
+            <button onclick="window.location.href='/sightings/<%= sighting.slug %>';">View</button>
+            <button onclick="window.location.href='/sightings/<%= sighting.slug %>/edit';">Edit</button>
+            <button onclick="window.location.href='/sightings/<%= sighting.slug %>/delete';">Delete</button>
 
         </div>
     <% end %>

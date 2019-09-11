@@ -1,6 +1,7 @@
 <h2><%= @sighting.common_name %></h2>
 <br>
 <img class= "show" src=<%= @sighting.img_src %>>
+
 <p><strong> Order: </strong><%= @sighting.order %> </p>
 <p><strong> Family: </strong><%= @sighting.family %> </p>
 <p><strong> Scientific name: </strong><%= @sighting.scientific_name %></p> 
@@ -8,5 +9,6 @@
 <p><strong> Sighting time: </strong> <%= @sighting.datetime.strftime("%l:%M %p") unless @sighting.datetime.nil? %> </p> 
 <p><strong> Sighting location: </strong><%= @sighting.location %></p> 
 <p><strong> Sighting description: </strong><%= @sighting.description %></p>
+
 <button onclick=window.location.href='/sightings/<%= @sighting.slug %>/edit';>Edit</button>
 <button onclick=window.location.href='/sightings/<%= @sighting.slug %>/delete';>Delete</button>
