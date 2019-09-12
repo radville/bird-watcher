@@ -11,7 +11,11 @@ class BirdSighting < ActiveRecord::Base
     end
 
     def self.find_by_slug(slug)
-        self.all.find{|sighting| sighting.slug == slug}
+        self.all.find{|sighting| sighting.slug == slug }
+    end
+
+    def self.find_by_slug_user(slug, user_id)
+        self.all.find{|sighting| sighting.slug == slug && sighting.user_id == user_id}
     end
 
 end

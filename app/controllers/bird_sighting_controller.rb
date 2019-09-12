@@ -66,7 +66,8 @@ class BirdSightingsController < ApplicationController
     
     get "/sightings/:slug" do
         if logged_in?
-            @sighting = BirdSighting.find_by_slug(params[:slug])
+            @session = session
+            @sighting = BirdSighting.find_by_slug_user(params[:slug], @session[:user_id])
             erb :"bird_sightings/show"
         else
             redirect to "/users/login"
