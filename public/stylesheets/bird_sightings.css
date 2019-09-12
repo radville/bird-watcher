@@ -1,3 +1,5 @@
+@media screen {
+
 /* --- styles for new/edit bird forms --- */
   
   .flex-outer li {
@@ -117,3 +119,19 @@
     color: #FFFF;
     border: 1px solid #1A5276;
   }
+}
+
+@media screen and (max-width: 600px) {
+  .grid-container {
+    grid-template: auto / 1fr;
+  }
+
+  #welcome {
+    justify-items: center;
+  }
+
+  #welcome .grid-item img {
+    max-width: 100vw;
+    max-height: 50vw;
+  }
+}

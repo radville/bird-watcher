@@ -102,6 +102,20 @@
     width: auto;
   }
 
+  .topnav {
+    flex-direction: column;
+  }
+
+  .topnav h2 a {
+    padding: 0em .7em 0em;
+    font-size: 1.5em;
+  }
+
+  .topnav a {
+    font-size: 1em;
+    padding: 1em;
+  }
+
   h1 {
     font-size: 24px;
     line-height: 36px;
