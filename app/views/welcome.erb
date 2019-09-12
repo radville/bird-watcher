@@ -1,11 +1,9 @@
 <div class="col-md-8 col-md-offset-2">
 <br>
-<div class="grid-container">
+<div id="welcome" class="grid-container">
     <% @birds.sample(5).each do |bird|%>
         <div class="grid-item">
-            <img src=<%= bird.img_src %>></a>
-            <br>
-            <h5><%= bird.credit %></h5>
+            <img src=<%= bird.img_src %> alt="bird photo" title="<%= bird.credit %>"/>
         </div>
     <% end %>
   

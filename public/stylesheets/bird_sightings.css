@@ -69,11 +69,25 @@
     grid-template: auto / 1fr 1fr 1fr 1fr 1fr;
     grid-gap: 5px;
   }
+
+  #welcome {
+    align-items: center;
+    width: 90vw;
+    overflow: auto;
+    padding: 1%;
+    grid-gap: 0;
+  }
+
+  #welcome .grid-item img {
+    max-height: 20vw;
+    width: auto;
+  }
   
   .grid-item {
     background-color: #FDFEFE;
     border: 1px solid #ccc;
     padding: 1%;
+    box-shadow: 2px 3px 2px #ccc; 
   }
 
   img.show{
