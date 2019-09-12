@@ -1,15 +1,15 @@
 <h3>Choose from the following birds or <a href="/sightings/new">create new bird sighting</a> </h3>
 <br>
+<% if !@search_terms.nil?%>
+    <h3>Results for "<%= @search_terms %>"</h3>
+<% end %>
+<br>
 <div class="searchBar">
     <form action="/sightings/choose" method="post">
         <input type="text" name="search" placeholder="Search for bird">
         <button type="submit">Search</button>
     </form>
 </div>
-
-<% if !@search_terms.nil?%>
-    <h3>Results for "<%= @search_terms %>"</h3>
-<% end %>
 
 <div class="grid-container">
     <% @birds.each do |bird|%>
