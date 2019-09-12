@@ -11,7 +11,7 @@ class UsersController < ApplicationController
         if params[:first_name] == "" || params[:email] == "" || params[:password] == ""
             flash[:message] = "Please enter valid first name, email address, and password."
             redirect to '/users/signup'
-        elsif User.all.each { |user| user.email == params[:email]}
+        elsif User.all.any? { |user| user.email == params[:email]}
             flash[:message] = "Email address already has an account."
             redirect to '/users/login'
         else
@@ -39,7 +39,7 @@ class UsersController < ApplicationController
 
             redirect to '/'
         else
-            flash[:message] = "Email address or password invalid."
+            flash[:message] = "Invalid email address or password."
             redirect to "/users/login"
         end
     end

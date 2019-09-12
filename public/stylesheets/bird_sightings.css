@@ -1,11 +1,11 @@
 /* --- styles for new/edit bird forms --- */
   
-  .flex-outer li{
+  .flex-outer li {
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
     margin-bottom: 20px;
-    }
+    font-size: 16pt;
+  }
     
   .flex-outer li label {
     text-transform: uppercase;
@@ -13,26 +13,21 @@
 
   .flex-outer li label, .flex-outer li .currentInfo {
     padding: 8px;
-    flex-grow: 1;
-    flex-wrap: wrap;
+    flex: 1 1 calc(33.33% - 20px);
     max-width: 25%;
+    word-wrap: break-word;
+
   }
 
-  .flex-outer li label + div.currentInfo {
-    flex: 20%;
-    }
-  
-  
-  .flex-outer > li > label + *, .flex-outer > li > .currentInfo + *{
+  .flex-outer > li > label + * {
     flex-grow: 1;
-    flex-wrap: wrap;
   }
 
   .flex-outer li input,
   .flex-outer li textarea {
     padding: 15px;
     border: none;
-    flex-grow: 2;
+    flex: 1 1 calc(33.33% - 20px)
   }
   
   .flex-outer li button {
@@ -45,6 +40,7 @@
     letter-spacing: .09em;
     border-radius: 2px;
   }
+
 /*  -- on hover-- */
   .flex-outer li button:hover {
     background-color: #ddd;
@@ -90,34 +86,34 @@
     box-shadow: 2px 3px 2px #ccc; 
   }
 
-  img.show{
+  img.show {
     max-width: 40vw;
     max-height: 40vw;
-}
+  }
 
   .grid-item img {
       width: 100%;
   }
 
-  .grid-item img.default{
+  .grid-item img.default {
     width: 30%;
     padding: 0% 30%;
-   }
+  }
 
-   button {
+  button {
     border: 1px solid #ccc;
     font-size: 1em;
     cursor: pointer;
     padding: .5% 2%;
-   }
+  }
   
-   .grid-item button {
+  .grid-item button {
     width: auto;
-   }
+  }
   
   /* On mouse-over */
-   button:hover {
-      background: #1A5276;
-      color: #FFFF;
-      border: 1px solid #1A5276;
-    }
+  button:hover {
+    background: #1A5276;
+    color: #FFFF;
+    border: 1px solid #1A5276;
+  }

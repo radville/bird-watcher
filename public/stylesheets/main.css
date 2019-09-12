@@ -31,11 +31,11 @@
     color: #FFFFFF;
   }
 
-/* Navbar links on mouse-over */
-.topnav a:hover {
-  background-color: #ddd;
-  color: black;
-}
+  /* Navbar links on mouse-over */
+  .topnav a:hover {
+    background-color: #ddd;
+    color: black;
+  }
 
   /* --- Welcome Page Styles --- */
 
@@ -61,7 +61,7 @@
     margin-bottom: 18px;
   }
 
-input[type=submit] {
+  input[type=submit] {
     background-color: #1A5276;
     border: none;
     color: white;
@@ -84,26 +84,17 @@ input[type=submit] {
 
   footer.branding {
     border-top: 2px solid #ccc;
-    margin-top: 20px;
+    margin: 20px;
     padding-top: 20px;
     color: #1A5276 ;
   }
 
-/* The animation code */
-/* @keyframes flash {
-  from {color: #D35400; display: block;}
-  to {color: #F5F5F5; display: none;}
-} */
-
-#flash {
-  margin: 0em 0em .5em;
-  font-size: 1.2em;
-  font-weight: 900;
-  color: #D35400;
-  /* animation-name: flash;
-  animation-duration: 10s;
-  animation-fill-mode: forwards; */
-}
+  #flash {
+    margin: .5em 0em .5em;
+    font-size: 1.2em;
+    font-weight: 900;
+    color: #D35400;
+  }
 
 }
 @media screen and (max-width: 600px) {
