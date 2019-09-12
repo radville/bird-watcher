@@ -9,13 +9,15 @@ class UsersController < ApplicationController
 
     post "/users/signup" do
         if params[:first_name] == "" || params[:email] == "" || params[:password] == ""
+            flash[:message] = "Please enter valid first name, email address, and password."
             redirect to '/users/signup'
         elsif User.all.each { |user| user.email == params[:email]}
-            flash[:message] = "Email address already has an account"
+            flash[:message] = "Email address already has an account."
             redirect to '/users/login'
         else
             @user = User.create(first_name: params[:first_name], last_name: params[:last_name], email: params[:email], password: params[:password])
             session[:user_id] = @user.id
+            
             flash[:message] = "Welcome, #{@user.first_name}! Successfully created account."
             redirect to '/'
         end
@@ -37,6 +39,7 @@ class UsersController < ApplicationController
 
             redirect to '/'
         else
+            flash[:message] = "Email address or password invalid."
             redirect to "/users/login"
         end
     end
