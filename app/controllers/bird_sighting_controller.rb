@@ -1,8 +1,9 @@
 class BirdSightingsController < ApplicationController
     get "/sightings/" do
         if logged_in?
-            @sightings = BirdSighting.all.select {|sighting| sighting.user_id == session[:user_id]}
-            @sightings.sort_by { |sighting| sighting.common_name}
+            @sightings = BirdSighting.all
+                .select {|sighting| sighting.user_id == session[:user_id]} 
+                .sort_by { |sighting| sighting.common_name}
             erb :"bird_sightings/index"
         else
             redirect to "/users/login"
@@ -68,6 +69,7 @@ class BirdSightingsController < ApplicationController
         if logged_in?
             @session = session
             @sighting = BirdSighting.find_by_slug_user(params[:slug], @session[:user_id])
+
             erb :"bird_sightings/show"
         else
             redirect to "/users/login"
@@ -76,7 +78,7 @@ class BirdSightingsController < ApplicationController
     
     get "/sightings/:slug/edit" do
         if logged_in?
-            @sighting = BirdSighting.find_by_slug(params[:slug])
+            @sighting = BirdSighting.find_by_slug_user(params[:slug], session[:user_id])
             if @sighting && @sighting.user == current_user
                 erb :"bird_sightings/edit"
             else
@@ -89,7 +91,7 @@ class BirdSightingsController < ApplicationController
     
     patch "/sightings/:slug" do
         if logged_in?
-            sighting = BirdSighting.find_by_slug(params[:slug])
+            sighting = BirdSighting.find_by_slug_user(params[:slug], session[:user_id])
             if sighting && sighting.user == current_user
                 sighting.update(common_name: params[:common_name]) if params[:common_name] != "" 
                 sighting.update(scientific_name: params[:scientific_name]) if params[:scientific_name] != "" 
@@ -112,7 +114,7 @@ class BirdSightingsController < ApplicationController
     
     get "/sightings/:slug/delete" do
         if logged_in?
-            sighting = BirdSighting.find_by_slug(params[:slug])
+            sighting = BirdSighting.find_by_slug_user(params[:slug], session[:user_id])
             if sighting && sighting.user == current_user
                 sighting.delete
             end

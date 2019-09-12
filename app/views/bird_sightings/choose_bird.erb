@@ -25,7 +25,7 @@
                 <input type="hidden" name="img_src" value="<%=bird.img_src%>">
                 <input type="hidden" name="credit" value="<%=bird.credit%>">
                 <input type="hidden" name="license_url" value="<%=bird.license_url%>">
-                <input type="hidden" name="datetime" value="<%=Time.now.change(:offset => "-5000")%>">
+                <input type="hidden" name="datetime" value="<%=DateTime.now%>">
                 <input type="submit" value="Add Bird Sighting">
             </form>
 
