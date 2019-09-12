@@ -1,7 +1,5 @@
 require './config/environment'
 
-# If no birds in the database, run Bird.create_from_scraper(Scraper.scrape_birds)
-
 class ApplicationController < Sinatra::Base
 
   configure do
