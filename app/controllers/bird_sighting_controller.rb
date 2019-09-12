@@ -4,6 +4,7 @@ class BirdSightingsController < ApplicationController
             @sightings = BirdSighting.all
                 .select {|sighting| sighting.user_id == session[:user_id]} 
                 .sort_by { |sighting| sighting.common_name}
+
             erb :"bird_sightings/index"
         else
             redirect to "/users/login"
@@ -11,15 +12,19 @@ class BirdSightingsController < ApplicationController
     end
     
     post "/sightings/" do
-        if logged_in? && params[:common_name] != ""
-
-            sighting = BirdSighting.create(common_name: params[:common_name], scientific_name: params[:scientific_name], \
-                datetime: params[:datetime], location: params[:location], description: params[:description], \
-                credit: params[:credit], img_src: params[:img_src], license_url: params[:license_url], \
-                order: params[:order], family: params[:family], user_id: session[:user_id])
-                
-            flash[:message] = "Successfully added to your list!"
-            redirect to "/sightings/#{sighting.slug}"
+        if logged_in? 
+            if params[:common_name] != ""
+                sighting = BirdSighting.create(common_name: params[:common_name], scientific_name: params[:scientific_name], \
+                    datetime: params[:datetime], location: params[:location], description: params[:description], \
+                    credit: params[:credit], img_src: params[:img_src], license_url: params[:license_url], \
+                    order: params[:order], family: params[:family], user_id: session[:user_id])
+                    
+                flash[:message] = "Successfully added to your list!"
+                redirect to "/sightings/#{sighting.slug}"
+            else
+                flash[:message] = "Please enter the bird's common name."
+                redirect to "/sightings/new"
+            end
         else
             redirect to "/users/login"
         end
@@ -43,9 +48,14 @@ class BirdSightingsController < ApplicationController
     end
 
     post "/sightings/choose" do
-        if logged_in? && params[:search] != ""
-            search = Search.new(params[:search])
-            redirect to "/sightings/choose/#{search.search_terms.downcase.gsub(" ","-")}"
+        if logged_in?
+            if params[:search] != ""
+                search = Search.new(params[:search])
+                redirect to "/sightings/choose/#{search.search_terms.downcase.gsub(" ","-")}"
+            else
+                flash[:message] = "Please enter search terms."
+                redirect to "/sightings/choose"
+            end
         else
             redirect to "/users/login"
         end
@@ -105,7 +115,7 @@ class BirdSightingsController < ApplicationController
 
                 redirect to "/sightings/#{sighting.slug}"
             else
-                flash[:message] = "Edits not saved. Please try again."
+                flash[:message] = "Bird sighting not found in your list."
 
                 redirect to "/sightings/:slug/edit"
             end
@@ -117,6 +127,9 @@ class BirdSightingsController < ApplicationController
             sighting = BirdSighting.find_by_slug_user(params[:slug], session[:user_id])
             if sighting && sighting.user == current_user
                 sighting.delete
+            else
+                flash[:message] = "Bird sighting not found in your list."
+                redirect to "/sightings/:slug/"
             end
             redirect to "/sightings/"
         else
