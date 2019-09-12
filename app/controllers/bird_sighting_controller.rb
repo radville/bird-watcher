@@ -50,8 +50,7 @@ class BirdSightingsController < ApplicationController
     post "/sightings/choose" do
         if logged_in?
             if params[:search] != ""
-                search = Search.new(params[:search])
-                redirect to "/sightings/choose/#{search.search_terms.downcase.gsub(" ","-")}"
+                redirect to "/sightings/choose/#{params[:search].downcase.gsub(" ","-")}"
             else
                 flash[:message] = "Please enter search terms."
                 redirect to "/sightings/choose"
@@ -63,10 +62,15 @@ class BirdSightingsController < ApplicationController
 
     get "/sightings/choose/:slug" do
         if logged_in?
-            search_terms = params[:slug].gsub("-"," ")
+            @search_terms = params[:slug].gsub("-"," ")
             @birds = []
-            search_terms.split(" ").each do |term|
-                @birds.concat Bird.all.select { |bird| bird.common_name.downcase.include?(term) }
+            @search_terms.split(" ").each do |term|
+                @birds.concat Bird.all.select { |bird| 
+                    bird.common_name.downcase.include?(term) ||
+                    bird.scientific_name.downcase.include?(term) ||
+                    bird.order.downcase.include?(term) ||
+                    bird.family.downcase.include?(term)
+                }
             end
 
             erb :"bird_sightings/choose_bird"

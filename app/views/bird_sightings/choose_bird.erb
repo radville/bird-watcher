@@ -7,6 +7,10 @@
     </form>
 </div>
 
+<% if !@search_terms.nil?%>
+    <h3>Results for "<%= @search_terms %>"</h3>
+<% end %>
+
 <div class="grid-container">
     <% @birds.each do |bird|%>
         <div class="grid-item">
