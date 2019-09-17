@@ -8,18 +8,13 @@ class UsersController < ApplicationController
     end
 
     post "/users/signup" do
-        if params[:first_name] == "" || params[:email] == "" || params[:password] == ""
-            flash[:message] = "Please enter valid first name, email address, and password."
-            redirect to '/users/signup'
-        elsif User.all.any? { |user| user.email == params[:email]}
-            flash[:message] = "Email address already has an account."
-            redirect to '/users/login'
-        else
-            @user = User.create(first_name: params[:first_name], last_name: params[:last_name], email: params[:email], password: params[:password])
+        @user = User.new(params)
+        if @user.save
             session[:user_id] = @user.id
-            
-            flash[:message] = "Welcome, #{@user.first_name}! Successfully created account."
             redirect to '/'
+        else
+            flash[:message] = @user.errors.full_messages.to_sentence
+            redirect to '/users/signup'
         end
     end
 
